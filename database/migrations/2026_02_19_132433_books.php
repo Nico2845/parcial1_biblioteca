@@ -36,6 +36,7 @@ return new class extends Migration
     {
         Schema::table("loans", function (Blueprint $table) {
             $table->dropForeign(["book_id"]);
+            $table->dropForeign([""]);
 
         });
     }
