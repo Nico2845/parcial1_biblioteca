@@ -36,7 +36,7 @@ class BooksController extends Controller
      */
     public function show(Books $books)
     {
-        //
+        return BooksResource::make($books);
     }
 
     /**
