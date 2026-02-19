@@ -24,12 +24,12 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(),
-            'description' => $this->faker->paragraph(),
-            'ISBN' => $this->faker->numberBetween(1000000000,9999999999),
-            'copiasDisponibles' => $this->faker->numberBetween(0, 10),
-            'copiasTotales' => $this->faker->numberBetween(1, 10),
-            'estado' => $this->faker->boolean(),
+            'title' => fake()->title(),
+            'description' => fake()->paragraph(),
+            'ISBN' => fake()->numberBetween(1000000000,9999999999),
+            'copiasDisponibles' => fake()->numberBetween(0, 10),
+            'copiasTotales' => fake()->numberBetween(1, 10),
+            'estado' => fake()->boolean(),
         ];
     }
 
@@ -39,7 +39,7 @@ class UserFactory extends Factory
     public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+            'title' => null,
         ]);
     }
 }
