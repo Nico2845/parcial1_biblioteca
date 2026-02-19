@@ -15,7 +15,16 @@ class BooksController extends Controller
      */
     public function index()
     {
+         $loans = Books::query()
+            ->when($request->has('nombreSolicitante'), function (Builder $query) use ($request) {
+                $query->where('fechaHoraPrestamo', 'like', '%' . $request->input('fechaHoraPrestamo') . '%');
+            })
+            ->when($request->has('book_id'), function (Builder $query) use ($request) {
+                $query->where('book_id', 'like', '%' . $request->input('book_id') . '%');
+            })
+            ->get();
         
+        return UserResource::collection($loans);
     }
 
     /**
